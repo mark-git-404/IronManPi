@@ -1,15 +1,14 @@
 #include <wiringPi.h>
 
-#define GPIO2 3;
 int main (void)
 {
   wiringPiSetup();
-  pinMode(GPIO2, OUTPUT);
+  pinMode(3, OUTPUT);
   for(i = 1; i < 11; ++i)
   {
-    digitalWrite(GPIO2, HIGH); 
+    digitalWrite(3, HIGH); 
     delay(500);
-    digitalWrite(GPIO2, LOW);
+    digitalWrite(3, LOW);
     delay(500);
   }
   return 0 ;
