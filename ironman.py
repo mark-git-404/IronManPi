@@ -3,17 +3,6 @@ from time import sleep
 import asyncio
 import websockets
 
-class WebSocketServer:
-    def __init__(self, websocket, path):
-        self.ws = websocket
-        self.path = path
-
-    async def hello(self):
-        name = await self.ws.recv()
-        print(f"<{name}")
-        return 1
-
-
 class IronGPIO:
     def __init__(self, arm, hand, head):
         self.arm = arm
