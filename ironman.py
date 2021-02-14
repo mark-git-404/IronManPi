@@ -1,7 +1,18 @@
-from gpiozero import Motor
+import gpiozero
 from time import sleep
 import asyncio
 import websockets
+
+class WebSocketServer:
+    def __init__(self, websocket, path):
+        self.ws = websocket
+        self.path = path
+
+    async def hello(self):
+        name = await self.ws.recv()
+        print(f"<{name}")
+        return 1
+
 
 class IronGPIO:
     def __init__(self, arm, hand, head):
@@ -12,7 +23,9 @@ class IronGPIO:
         Args:
             pinNumber (int) [0 - 40] - pin number in BoardMode
     """
-    def Click(self, pinNumber):
+    def ClickPin(self, pinNumber):
+        pin = pinNumber
+
         
         return 1
 
@@ -37,9 +50,9 @@ class IronGPIO:
 
 def test():
     #! Instances
-    arm = Motor(35, 37)
-    hand = Motor(10,11)
-    head = Motor(35, 37)
+    arm = gpiozero.Motor(35, 37)
+    hand = gpiozero.Motor(33, 35)
+    head = gpiozero.Motor(3, 37)
 
     iron = IronGPIO(arm, hand, head)
 
@@ -47,10 +60,5 @@ def test():
         iron.MoveArm(hand, 2, way=0)
         iron.MoveArm(hand, 2, way=1)
 
-
-    iron.Move()
     
-
-
-
-if __name__ == __main__:
+test()
