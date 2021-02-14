@@ -2,10 +2,8 @@ import gpiozero
 from time import sleep
 
 class IronGPIO:
-    def __init__(self, arm, hand, head):
-        self.arm = arm
+    def __init__(self, hand):
         self.hand = hand
-        self.head = head
     """
         Args:
             pinNumber (int) [0 - 40] - pin number in BoardMode
@@ -37,11 +35,9 @@ class IronGPIO:
 
 def test():
     #! Instances
-    arm = gpiozero.Motor(35, 37)
     hand = gpiozero.Motor(33, 35)
-    head = gpiozero.Motor(3, 37)
 
-    iron = IronGPIO(arm, hand, head)
+    iron = IronGPIO(hand)
 
     while True:
         iron.MoveArm(hand, 2, way=0)
