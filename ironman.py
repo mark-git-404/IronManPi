@@ -1,7 +1,5 @@
 import gpiozero
 from time import sleep
-import asyncio
-import websockets
 
 class IronGPIO:
     def __init__(self, arm, hand, head):
